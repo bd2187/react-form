@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class NameForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { name: "", about: "" };
+    this.state = { name: "", about: "", occupation: "web_developer" };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,6 +16,9 @@ class NameForm extends Component {
         break;
       case "about":
         this.setState({ about: e.target.value });
+        break;
+      case "occupation":
+        this.setState({ occupation: e.target.value });
         break;
       default:
         return;
@@ -39,6 +42,22 @@ class NameForm extends Component {
           value={this.state.name}
           onChange={this.handleChange}
         />
+
+        <br />
+        <br />
+
+        <label htmlFor="occupation">Occupation:</label>
+        <br />
+        <select
+          name="occupation"
+          id="occupation"
+          value={this.state.occupation}
+          onChange={this.handleChange}
+        >
+          <option value="dev_ops">Dev Ops</option>
+          <option value="web_developer">Web Developer</option>
+          <option value="it_support">IT Support</option>
+        </select>
 
         <br />
         <br />
