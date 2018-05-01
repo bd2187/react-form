@@ -3,14 +3,23 @@ import React, { Component } from "react";
 class NameForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
+    this.state = { name: "", about: "" };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
-    this.setState({ value: e.target.value });
+    switch (e.target.id) {
+      case "name":
+        this.setState({ name: e.target.value });
+        break;
+      case "about":
+        this.setState({ about: e.target.value });
+        break;
+      default:
+        return;
+    }
   }
 
   handleSubmit(e) {
@@ -26,9 +35,23 @@ class NameForm extends Component {
         <input
           type="text"
           name="name"
-          value={this.state.value}
+          id="name"
+          value={this.state.name}
           onChange={this.handleChange}
         />
+
+        <br />
+        <br />
+
+        <label htmlFor="about">About Me:</label>
+        <br />
+        <textarea
+          id="about"
+          value={this.state.about}
+          onChange={this.handleChange}
+        />
+        <br />
+        <input type="submit" />
       </form>
     );
   }
