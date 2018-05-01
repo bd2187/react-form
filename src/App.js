@@ -9,14 +9,13 @@ class NameForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange() {
-    var value = document.getElementById("name").value;
-    this.setState({ value: value });
+  handleChange(e) {
+    this.setState({ value: e.target.value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log("submit");
+    console.log(this.state);
   }
 
   render() {
@@ -26,9 +25,8 @@ class NameForm extends Component {
         <br />
         <input
           type="text"
-          placeholder="Input name"
-          id="name"
           name="name"
+          value={this.state.value}
           onChange={this.handleChange}
         />
       </form>
